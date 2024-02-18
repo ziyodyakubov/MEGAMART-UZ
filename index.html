@@ -24,7 +24,7 @@
 
 <body>
     <!-- HEADER SECTION STARTED -->
-    <header class="border-b-[#EDEDED] border-b-[1px] sticky top-0 bg-[#fff] z-10">
+    <header class="border-b-[#EDEDED] border-b-[1px] sticky top-0 bg-[#fff] z-20">
         <div class="container">
             <div class="header-top flex justify-between items-center text-[#666666] text-[14px]">
                 <p>Welcome to worldwide Megamart!</p>
@@ -45,9 +45,10 @@
                 </div>
 
                 <ul class="flex items-center gap-[20px]">
-                    <li class="flex items-center gap-4">
+                    <li class="flex items-center gap-3">
                         <i class='bx bx-search text-[18px] relative left-[50px] top-[2px]'></i>
-                        <input type="text" class="bg-[#F3F9FB] w-[507px] h-[48px] pl-[40px] rounded-[12px] outline-none"
+                        <input id="searchbtn" type="text"
+                            class="bg-[#F3F9FB] w-[507px] h-[48px] pl-[40px] rounded-[12px] outline-none"
                             placeholder="Search essentials, groceries and more...">
                         <i class='bx bx-menu text-[24px] relative right-[50px] cursor-pointer'></i>
                     </li>
@@ -67,6 +68,14 @@
         </div>
     </header>
     <!-- HEADER SECTION ENDED -->
+
+    <!-- SEARCH RESULT STARTED -->
+
+    <div class="moshniy p-[20px] w-[510px] bg-[#dff5ff] absolute z-10 rounded-[12px] left-[810px] hidden">
+
+    </div>
+
+    <!-- SEARCH RESULT ENDED -->
 
     <!-- MAIN SECTION STARTED -->
     <main>

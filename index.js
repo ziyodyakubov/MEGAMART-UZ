@@ -65,7 +65,6 @@ function findBrand(data) {
   }
 
 }
-console.log(brand);
 
 findBrand(product.products)
 
@@ -87,7 +86,6 @@ function renderBrand(data) {
   }
 
 }
-
 
 renderBrand(brand)
 
@@ -118,32 +116,40 @@ function sortBrands(brandNmae){
 
 
 
-// CHEAPER PROCESSING CLICK STARTED
+
+
+
+// PRICE CONTROLE PROCESSING CLICK STARTED
+
+let price = document.querySelector("#price")
 
 function toCheaper(data){
-    return data.products.slice().sort((a,b) => a.price - b.price);
+    let cheap =  data.products.slice().sort((a,b) => a.price - b.price);
+    renderdata(cheap);
 }
-
-const resultat1 = toCheaper(product);
-console.log("Sorted by price CHEAPER:", resultat1);
-
-// CHEAPER PROCESSING CLICK ENDED
-
-
-
-
-
-
-// EXPENSIVE PROCESSING CLICK STARTED
 
 function toExpensive(data){
-    return data.products.slice().sort((a,b) => b.price - a.price);
+    let exp =  data.products.slice().sort((a,b) => b.price - a.price);
+    renderdata(exp);
 }
 
-const resultat2 = toExpensive(product);
-console.log("Sorted by price EXPENSIVE:", resultat2);
+let cheap = document.querySelector(".cheaper");
+price.addEventListener('change', () =>{
+  if(price.value == 'cheap'){
+      toCheaper(product)
+  } else if(price.value == 'expensive'){
+    toExpensive(product )
+  }
+});
 
-// EXPENSIVE PROCESSING CLICK ENDED
+
+// PRICE CONTROLE PROCESSING CLICK ENDED
+
+
+
+
+
+
 
 
 // CATEGORY INTERCHANGE STARTED
@@ -209,3 +215,55 @@ function sortCategory(brandNmae){
 }
 
 // CATEGORY INTERCHANGE ENDED
+
+
+
+
+
+
+// SEARCH PROCESSING STARTED
+
+let search = document.querySelector("#searchbtn");
+let moshniy = document.querySelector(".moshniy")
+
+search.addEventListener('input', function (e) {
+    moshniy.classList.toggle("hidden");
+
+    if (moshniy.classList[5] !== "hidden") {
+        moshniy.style.display = 'flex';
+        moshniy.style = 'flex-col';
+        moshniy.style = 'gap-[102px]';
+    }
+
+})
+
+search.addEventListener("input", function (e) {
+    let searchStr = e.target.value;
+    let searched = product.products.filter(el => {
+        return el.title.toLowerCase().includes(searchStr.toLowerCase())
+    })
+
+    if(searchStr == ""){
+        searchWrapper.style.display = "none";
+    }
+
+    RenderData2(searched)
+
+})
+
+function RenderData2(data) {
+    moshniy.innerHTML = ''
+    data.forEach(el => {
+        let searchTitle = document.createElement('li')
+        searchTitle.classList.add("list-none")
+        searchTitle.classList.add("text-[#666]")
+        searchTitle.classList.add("pt-[5px]")
+        searchTitle.classList.add("cursor-pointer")
+        searchTitle.textContent = el.title;
+        moshniy.appendChild(searchTitle)
+    })
+
+}
+
+
+// SEARCH PROCESSING ENDED
